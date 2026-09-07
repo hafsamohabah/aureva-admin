@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Aureva Ginger Paste",
+      "description": "A smooth ginger paste made for everyday cooking.",
+      "category": "Paste",
+      "price": 350,
+      "size": "300 g",
+      "stock": 25,
+      "image": ""
+    },
+    {
+      "id": "2",
+      "name": "Aureva Turmeric Paste",
+      "description": "A flavorful turmeric paste that adds warmth and color to meals.",
+      "category": "Paste",
+      "price": 350,
+      "size": "300 g",
+      "stock": 30,
+      "image": ""
+    },
+    {
+      "id": "3",
+      "name": "Aureva Garlic Paste",
+      "description": "A convenient garlic paste for quick and flavorful cooking.",
+      "category": "Paste",
+      "price": 350,
+      "size": "300 g",
+      "stock": 28,
+      "image": ""
+    },
+    {
+      "id": "4",
+      "name": "Aureva Ginger & Garlic Paste",
+      "description": "A balanced blend of ginger and garlic for everyday recipes.",
+      "category": "Paste Blend",
+      "price": 400,
+      "size": "300 g",
+      "stock": 22,
+      "image": ""
+    },
+    {
+      "id": "5",
+      "name": "Aureva Ginger, Garlic & Turmeric Paste",
+      "description": "A versatile blend of ginger, garlic and turmeric for flavorful meals.",
+      "category": "Paste Blend",
+      "price": 450,
+      "size": "300 g",
+      "stock": 20,
+      "image": ""
+    }
+  ]
+}
