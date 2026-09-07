@@ -1,0 +1,51 @@
+.add-product {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.add-product__header {
+  margin-bottom: 2rem;
+}
+
+.add-product__label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.add-product__header h1 {
+  font-size: 3rem;
+  margin: 0.5rem 0;
+}
+
+.add-product__header p:last-child {
+  color: #666;
+}
+
+.add-product__form {
+  max-width: 650px;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.add-product__message {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .add-product {
+    padding: 2rem 1rem;
+  }
+
+  .add-product__header h1 {
+    font-size: 2.25rem;
+  }
+
+  .add-product__form {
+    padding: 1.25rem;
+  }
+}

@@ -1,0 +1,170 @@
+.product-details {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.product-details__back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.product-details__back:hover {
+  text-decoration: underline;
+}
+
+.product-details__card {
+  padding: 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.product-details__category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.product-details__intro h1 {
+  margin: 0.75rem 0 1rem;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1.1;
+}
+
+.product-details__description {
+  max-width: 650px;
+  color: #666;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.product-details__information {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2.5rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-details__information div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.product-details__information span {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.product-details__information strong {
+  font-size: 1.1rem;
+}
+
+.product-details__actions,
+.product-details__delete {
+  padding-top: 1.5rem;
+}
+
+.product-details__actions h2,
+.product-details__delete h2 {
+  margin-bottom: 1rem;
+}
+
+.product-details__actions form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+
+.product-details__actions label {
+  font-weight: 600;
+}
+
+.product-details__actions input {
+  padding: 0.85rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.product-details__actions input:focus {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
+.product-details__actions button,
+.product-details__delete button {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #222;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.product-details__actions button:hover,
+.product-details__delete button:hover {
+  opacity: 0.85;
+}
+
+.product-details__message {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.product-details__error {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.product-details__delete {
+  margin-top: 2rem;
+  border-top: 1px solid #ddd;
+}
+
+.product-details__delete p {
+  color: #666;
+}
+
+.product-details__delete button {
+  background-color: #8b1e1e;
+}
+
+.product-details__status {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 600px) {
+  .product-details {
+    padding: 2rem 1rem;
+  }
+
+  .product-details__card {
+    padding: 1.5rem;
+  }
+
+  .product-details__information {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .product-details__actions button,
+  .product-details__delete button {
+    width: 100%;
+  }
+}

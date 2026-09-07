@@ -1,0 +1,38 @@
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 500px;
+}
+
+.search-bar label {
+  color: #e8e8e8;
+  font-weight: 600;
+}
+
+.search-bar input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.85rem 1rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  color: #222;
+  background-color: white;
+  font-size: 1rem;
+}
+
+.search-bar input::placeholder {
+  color: #777;
+  opacity: 1;
+}
+
+.search-bar input:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .search-bar {
+    max-width: 100%;
+  }
+}
