@@ -1,51 +1,42 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import useProducts from "../hooks/useProducts";
+import { useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import useProductContext from "../context/useProductContext";
+import "../styles/ProductDetails.css";
 
 function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { updateProduct, deleteProduct } = useProducts();
 
-  const [product, setProduct] = useState(null);
+  const {
+    products,
+    loading,
+    error,
+    updateProduct,
+    deleteProduct,
+  } = useProductContext();
+
+  const product = products.find(
+    (currentProduct) => String(currentProduct.id) === String(id)
+  );
+
   const [price, setPrice] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetch(`http://localhost:3000/products/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Product not found");
-        }
-
-        return response.json();
-      })
-      .then((data) => {
-        setProduct(data);
-        setPrice(data.price);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, [id]);
+  const [productError, setProductError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setMessage("");
+    setProductError("");
 
     try {
       const updatedProduct = await updateProduct(id, {
         price: Number(price),
       });
 
-      setProduct(updatedProduct);
+      setPrice(updatedProduct.price);
       setMessage("Product updated successfully.");
     } catch (error) {
-      setError(error.message);
+      setProductError(error.message);
     }
   };
 
@@ -62,49 +53,101 @@ function ProductDetails() {
       await deleteProduct(id);
       navigate("/products");
     } catch (error) {
-      setError(error.message);
+      setProductError(error.message);
     }
   };
 
   if (loading) {
-    return <p>Loading product...</p>;
+    return <p className="product-details__status">Loading product...</p>;
   }
 
-  if (error && !product) {
-    return <p>Error: {error}</p>;
+  if (error) {
+    return <p className="product-details__status">Error: {error}</p>;
+  }
+
+  if (!product) {
+    return (
+      <p className="product-details__status">
+        Product not found.
+      </p>
+    );
   }
 
   return (
-    <main>
-      <h1>{product.name}</h1>
+    <main className="product-details">
+      <Link className="product-details__back" to="/products">
+        ← Back to Products
+      </Link>
 
-      <p>{product.description}</p>
-      <p>Category: {product.category}</p>
-      <p>Size: {product.size}</p>
-      <p>Stock: {product.stock}</p>
+      <section className="product-details__card">
+        <div className="product-details__intro">
+          <p className="product-details__category">{product.category}</p>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="price">Price</label>
+          <h1>{product.name}</h1>
 
-        <input
-          id="price"
-          type="number"
-          value={price}
-          onChange={(event) => setPrice(event.target.value)}
-          min="0"
-          required
-        />
+          <p className="product-details__description">
+            {product.description}
+          </p>
+        </div>
 
-        <button type="submit">Update Price</button>
-      </form>
+        <div className="product-details__information">
+          <div>
+            <span>Size</span>
+            <strong>{product.size}</strong>
+          </div>
 
-      {message && <p>{message}</p>}
+          <div>
+            <span>Stock</span>
+            <strong>{product.stock} units</strong>
+          </div>
 
-      {error && <p>Error: {error}</p>}
+          <div>
+            <span>Current Price</span>
+            <strong>KSh {product.price}</strong>
+          </div>
+        </div>
 
-      <button type="button" onClick={handleDelete}>
-        Delete Product
-      </button>
+        <div className="product-details__actions">
+          <h2>Update Product</h2>
+
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="price">Price</label>
+
+            <input
+              id="price"
+              type="number"
+              value={price || product.price}
+              onChange={(event) => setPrice(event.target.value)}
+              min="0"
+              required
+            />
+
+            <button type="submit">Update Price</button>
+          </form>
+
+          {message && (
+            <p className="product-details__message">{message}</p>
+          )}
+
+          {productError && (
+            <p className="product-details__error">
+              Error: {productError}
+            </p>
+          )}
+        </div>
+
+        <div className="product-details__delete">
+          <h2>Delete Product</h2>
+
+          <p>
+            Remove this product from the Aureva product collection.
+          </p>
+
+          <button type="button" onClick={handleDelete}>
+            Delete Product
+          </button>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,23 +1,15 @@
 import { useState } from "react";
+import useProductContext from "../context/useProductContext";
 import ProductForm from "../components/ProductForm";
+import "../styles/AddProduct.css";
 
 function AddProduct() {
+  const { addProduct } = useProductContext();
   const [message, setMessage] = useState("");
 
   const handleAddProduct = async (productData) => {
     try {
-      const response = await fetch("http://localhost:3000/products", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(productData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to add product");
-      }
-
+      await addProduct(productData);
       setMessage("Product added successfully.");
     } catch (error) {
       setMessage(error.message);
@@ -25,16 +17,25 @@ function AddProduct() {
   };
 
   return (
-    <main>
-      <h1>Add Product</h1>
-      <p>Add a new Aureva product to the collection.</p>
+    <main className="add-product">
+      <section className="add-product__header">
+        <p className="add-product__label">PRODUCT MANAGEMENT</p>
 
-      <ProductForm
-        onSubmit={handleAddProduct}
-        buttonText="Add Product"
-      />
+        <h1>Add Product</h1>
 
-      {message && <p>{message}</p>}
+        <p>Add a new Aureva product to the collection.</p>
+      </section>
+
+      <section className="add-product__form">
+        <ProductForm
+          onSubmit={handleAddProduct}
+          buttonText="Add Product"
+        />
+
+        {message && (
+          <p className="add-product__message">{message}</p>
+        )}
+      </section>
     </main>
   );
 }

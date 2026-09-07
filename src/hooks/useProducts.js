@@ -24,6 +24,29 @@ function useProducts() {
       });
   }, []);
 
+  const addProduct = async (productData) => {
+    const response = await fetch("http://localhost:3000/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to add product");
+    }
+
+    const newProduct = await response.json();
+
+    setProducts((currentProducts) => [
+      ...currentProducts,
+      newProduct,
+    ]);
+
+    return newProduct;
+  };
+
   const updateProduct = async (id, updatedData) => {
     const response = await fetch(`http://localhost:3000/products/${id}`, {
       method: "PATCH",
@@ -41,7 +64,7 @@ function useProducts() {
 
     setProducts((currentProducts) =>
       currentProducts.map((product) =>
-        product.id === id ? updatedProduct : product
+        String(product.id) === String(id) ? updatedProduct : product
       )
     );
 
@@ -58,7 +81,9 @@ function useProducts() {
     }
 
     setProducts((currentProducts) =>
-      currentProducts.filter((product) => product.id !== id)
+      currentProducts.filter(
+        (product) => String(product.id) !== String(id)
+      )
     );
   };
 
@@ -66,6 +91,7 @@ function useProducts() {
     products,
     loading,
     error,
+    addProduct,
     updateProduct,
     deleteProduct,
   };

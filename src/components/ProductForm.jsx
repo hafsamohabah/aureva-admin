@@ -1,4 +1,5 @@
 import { useId, useRef, useState } from "react";
+import "../styles/ProductForm.css";
 
 function ProductForm({ onSubmit, buttonText = "Add Product" }) {
   const nameId = useId();
@@ -50,8 +51,8 @@ function ProductForm({ onSubmit, buttonText = "Add Product" }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form className="product-form" onSubmit={handleSubmit}>
+      <div className="product-form__field">
         <label htmlFor={nameId}>Product Name</label>
         <input
           ref={nameInputRef}
@@ -63,7 +64,7 @@ function ProductForm({ onSubmit, buttonText = "Add Product" }) {
         />
       </div>
 
-      <div>
+      <div className="product-form__field">
         <label htmlFor={descriptionId}>Description</label>
         <textarea
           id={descriptionId}
@@ -74,7 +75,7 @@ function ProductForm({ onSubmit, buttonText = "Add Product" }) {
         />
       </div>
 
-      <div>
+      <div className="product-form__field">
         <label htmlFor={categoryId}>Category</label>
         <select
           id={categoryId}
@@ -87,7 +88,7 @@ function ProductForm({ onSubmit, buttonText = "Add Product" }) {
         </select>
       </div>
 
-      <div>
+      <div className="product-form__field">
         <label htmlFor={priceId}>Price</label>
         <input
           id={priceId}
@@ -100,7 +101,7 @@ function ProductForm({ onSubmit, buttonText = "Add Product" }) {
         />
       </div>
 
-      <div>
+      <div className="product-form__field">
         <label htmlFor={sizeId}>Size</label>
         <input
           id={sizeId}
@@ -111,7 +112,7 @@ function ProductForm({ onSubmit, buttonText = "Add Product" }) {
         />
       </div>
 
-      <div>
+      <div className="product-form__field">
         <label htmlFor={stockId}>Stock</label>
         <input
           id={stockId}
@@ -124,7 +125,9 @@ function ProductForm({ onSubmit, buttonText = "Add Product" }) {
         />
       </div>
 
-      <button type="submit">{buttonText}</button>
+      <button className="product-form__button" type="submit">
+        {buttonText}
+      </button>
     </form>
   );
 }

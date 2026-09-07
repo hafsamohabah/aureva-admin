@@ -1,25 +1,29 @@
 import { Link } from "react-router-dom";
+import "../styles/Home.css";
 
 function Home() {
   return (
-    <main>
-      <h1>Welcome to Aureva</h1>
+    <main className="home">
+      <section className="home__hero">
+        <p className="home__label">AUREVA ADMIN PORTAL</p>
 
-      <p>
-        Aureva is a collection of flavorful spice pastes made for everyday
-        cooking.
-      </p>
+        <h1>Manage your Aureva products with ease.</h1>
 
-      <h2>Manage Your Products</h2>
+        <p className="home__description">
+          Aureva brings flavorful spice pastes to everyday cooking. Use this
+          portal to manage the product collection.
+        </p>
 
-      <p>
-        Use this admin portal to view, add, edit, and manage Aureva products.
-      </p>
+        <div className="home__actions">
+          <Link className="home__button" to="/products">
+            View Products
+          </Link>
 
-      <div>
-        <Link to="/products">View Products</Link>
-        <Link to="/add-product">Add Product</Link>
-      </div>
+          <Link className="home__button home__button--secondary" to="/add-product">
+            Add Product
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

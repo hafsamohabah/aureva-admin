@@ -1,6 +1,8 @@
+import "../styles/SearchBar.css";
+
 function SearchBar({ searchTerm, onSearchChange }) {
   return (
-    <div>
+    <div className="search-bar">
       <label htmlFor="product-search">Search products</label>
 
       <input

@@ -8,6 +8,7 @@
   "server": "json-server --watch db.json --port 3000",
   "build": "vite build",
   "lint": "oxlint",
+  "test": "vitest",
   "preview": "vite preview"
 },
   "dependencies": {
