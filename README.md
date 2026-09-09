@@ -138,3 +138,51 @@ aureva-admin/
 ├── vite.config.js
 ├── README.md
 └── LICENSE
+```
+
+## Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/hafsamohabah/aureva-admin.git
+cd aureva-admin
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the JSON Server backend
+
+In one terminal, run:
+
+```bash
+npm run server
+```
+
+The JSON Server backend will run at:
+
+```text
+http://localhost:3000
+```
+
+### 4. Start the React development server
+
+Open a second terminal and run:
+
+```bash
+npm run dev
+```
+
+Vite will provide a local URL where the application can be opened in the browser.
+
+### 5. Run the tests
+
+To run the project's tests:
+
+```bash
+npm test
+```
